@@ -11,7 +11,7 @@ class WelcomePage extends StatefulWidget {
 }
 
 class _WelcomePageState extends State<WelcomePage> {
-  dynamic description = 'Overcast Clouds';
+  dynamic description;
   dynamic maxTemp;
   dynamic minTemp;
   dynamic city;

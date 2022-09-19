@@ -69,6 +69,7 @@ class _CurrentWeatherState extends State<CurrentWeather> {
                   widget.icon == '--'
                       ? const ModifiedText(text: '--')
                       : Image.asset(
+                        
                           widget.icon,
                           width: 80,
                           height: 80,

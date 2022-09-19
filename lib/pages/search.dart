@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-
+import '../pages/current_weather.dart';
 import '../services/api.dart';
 import '../services/location.dart';
 
@@ -82,6 +82,21 @@ class _SearchBoxState extends State<SearchBox> {
                 child: IconButton(
                   onPressed: () {
                     getLocalInfo();
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                        builder: (context) => CurrentWeather(
+                          city: city,
+                          country: country,
+                          description: description,
+                          icon: 'images/$icon.png',
+                          maxTemp: maxTemp,
+                          feelsLike: feelsLike,
+                          minTemp: minTemp,
+                          temp: temp,
+                        ),
+                      ),
+                    );
                   },
                   icon: const Icon(Icons.location_on),
                 ),
