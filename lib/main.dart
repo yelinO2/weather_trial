@@ -20,7 +20,7 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         brightness: Brightness.dark,
       ),
-      initialRoute: '/welcome',
+      initialRoute: '/home',
       routes: {
         '/welcome': (context) => const WelcomePage(),
         '/home': (context) => const HomeScreen(),

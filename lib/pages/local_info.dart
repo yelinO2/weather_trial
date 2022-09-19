@@ -5,20 +5,17 @@ import 'package:weather_app/components/text.dart';
 import 'package:flutter/material.dart';
 
 // ignore: must_be_immutable
-class CurrentWeather extends StatefulWidget {
-  dynamic description = '--';
-  dynamic maxTemp = '--';
-  dynamic minTemp = '--';
-  dynamic city = '--';
-  dynamic country = '--';
-  dynamic temp = '--';
-  dynamic feelsLike = '--';
-  dynamic wind = '--';
-  dynamic humidity = '--';
-  dynamic pressure = '--';
+class LocalInfo extends StatefulWidget {
+  dynamic description;
+  dynamic maxTemp;
+  dynamic minTemp;
+  dynamic city;
+  dynamic country;
+  dynamic temp;
+  dynamic feelsLike;
 
   dynamic icon;
-  CurrentWeather(
+  LocalInfo(
       {Key? key,
       this.city,
       this.country,
@@ -31,10 +28,10 @@ class CurrentWeather extends StatefulWidget {
       : super(key: key);
 
   @override
-  State<CurrentWeather> createState() => _CurrentWeatherState();
+  State<LocalInfo> createState() => _LocalInfoState();
 }
 
-class _CurrentWeatherState extends State<CurrentWeather> {
+class _LocalInfoState extends State<LocalInfo> {
   @override
   Widget build(BuildContext context) {
     Size size = MediaQuery.of(context).size;
@@ -47,14 +44,13 @@ class _CurrentWeatherState extends State<CurrentWeather> {
             Container(
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.center,
-                children: [
-                  const Icon(
+                children: const [
+                  Icon(
                     Icons.location_city_rounded,
                     size: 30,
                   ),
-                  const SizedBox(width: 10),
-                  ModifiedText(
-                      text: '${widget.city} / ${widget.country}', size: 20),
+                  SizedBox(width: 10),
+                  ModifiedText(text: 'London / GB', size: 20),
                 ],
               ),
             ),
@@ -66,32 +62,30 @@ class _CurrentWeatherState extends State<CurrentWeather> {
                 crossAxisAlignment: CrossAxisAlignment.center,
                 mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                 children: [
-                  widget.icon == '--'
-                      ? const ModifiedText(text: '--')
-                      : Image.asset(
-                          widget.icon,
-                          width: 80,
-                          height: 80,
-                        ),
-                  ModifiedText(
-                    text: widget.description,
+                  Image.asset(
+                    'images/01d.png',
+                    width: 80,
+                    height: 80,
+                  ),
+                  const ModifiedText(
+                    text: 'Broken Cloud',
                     size: 18,
                   ),
-                  ModifiedText(
-                    text: widget.temp,
+                  const ModifiedText(
+                    text: '32°',
                     fontWeight: FontWeight.bold,
                     size: 60,
                   ),
                   Row(
                     mainAxisAlignment: MainAxisAlignment.center,
-                    children: [
+                    children: const [
                       ModifiedText(
-                        text: 'H : ${widget.maxTemp}',
+                        text: 'H : 30°',
                         size: 16,
                       ),
-                      const SizedBox(width: 20),
+                      SizedBox(width: 20),
                       ModifiedText(
-                        text: 'L : ${widget.minTemp}',
+                        text: 'L : 20°',
                         size: 16,
                       ),
                     ],
@@ -106,7 +100,7 @@ class _CurrentWeatherState extends State<CurrentWeather> {
                             width: size.width * 0.12,
                           ),
                           const SizedBox(height: 5),
-                          ModifiedText(text: '${widget.wind} km/h'),
+                          const ModifiedText(text: '10 km/h'),
                           const SizedBox(height: 10),
                           const ModifiedText(
                             text: 'Wind',
@@ -122,7 +116,7 @@ class _CurrentWeatherState extends State<CurrentWeather> {
                             width: size.width * 0.12,
                           ),
                           const SizedBox(height: 5),
-                          ModifiedText(text: widget.humidity),
+                          const ModifiedText(text: '80'),
                           const SizedBox(height: 10),
                           const ModifiedText(
                             text: 'Humidity',
@@ -131,22 +125,21 @@ class _CurrentWeatherState extends State<CurrentWeather> {
                         ],
                       )),
                       Expanded(
-                        child: Column(
-                          children: [
-                            Image.asset(
-                              'images/pressure.png',
-                              width: size.width * 0.12,
-                            ),
-                            const SizedBox(height: 5),
-                            ModifiedText(text: widget.pressure),
-                            const SizedBox(height: 10),
-                            const ModifiedText(
-                              text: 'Pressure',
-                              fontWeight: FontWeight.bold,
-                            ),
-                          ],
-                        ),
-                      ),
+                          child: Column(
+                        children: [
+                          Image.asset(
+                            'images/pressure.png',
+                            width: size.width * 0.12,
+                          ),
+                          const SizedBox(height: 5),
+                          const ModifiedText(text: '1000'),
+                          const SizedBox(height: 10),
+                          const ModifiedText(
+                            text: 'Pressure',
+                            fontWeight: FontWeight.bold,
+                          ),
+                        ],
+                      )),
                     ],
                   )
                 ],
