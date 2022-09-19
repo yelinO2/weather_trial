@@ -39,7 +39,8 @@ class Location {
 
     if (response.statusCode == 200) {
       var localWeater = Weather.fromRawJson(response.body);
-
+      print('Here..........>>>>>>>');
+      print(localWeater.main!.feelsLike);
       return localWeater;
     } else {
       throw Exception('Request fail with status: ${response.statusCode}');

@@ -25,7 +25,7 @@ class _SearchBoxState extends State<SearchBox> {
   dynamic icon;
   TextEditingController cityName = TextEditingController();
 
-  getLocalInfo() {
+  getLocalInfo() async {
     Location().getLocalWeather().then((value) {
       setState(() {
         country = value.sys!.country.toString();
@@ -42,6 +42,7 @@ class _SearchBoxState extends State<SearchBox> {
         icon = value.weather![0].icon.toString();
       });
     });
+    print(humidity);
   }
 
   getCityInfo() {
@@ -61,6 +62,8 @@ class _SearchBoxState extends State<SearchBox> {
         icon = value.weather![0].icon.toString();
       });
     });
+
+    print(wind);
   }
 
   @override
@@ -82,21 +85,6 @@ class _SearchBoxState extends State<SearchBox> {
                 child: IconButton(
                   onPressed: () {
                     getLocalInfo();
-                    Navigator.push(
-                      context,
-                      MaterialPageRoute(
-                        builder: (context) => CurrentWeather(
-                          city: city,
-                          country: country,
-                          description: description,
-                          icon: 'images/$icon.png',
-                          maxTemp: maxTemp,
-                          feelsLike: feelsLike,
-                          minTemp: minTemp,
-                          temp: temp,
-                        ),
-                      ),
-                    );
                   },
                   icon: const Icon(Icons.location_on),
                 ),

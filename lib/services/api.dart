@@ -11,6 +11,7 @@ class API {
 
     if (response.statusCode == 200) {
       var weather = Weather.fromRawJson(response.body);
+      print(weather.sys!.country);
       return weather;
     } else {
       throw Exception('Request fail with status: ${response.statusCode}');

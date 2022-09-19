@@ -38,10 +38,10 @@ class _WelcomePageState extends State<WelcomePage> {
         humidity = value.main!.humidity.toString();
         wind = value.wind!.speed.toString();
         icon = value.weather![0].icon.toString();
-
-        print(wind);
       });
     });
+    print('>>>>>>>>>>>>>');
+    print(feelsLike);
   }
 
   getCityInfo() {
